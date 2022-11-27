@@ -54,6 +54,6 @@ public class Employee {
 
     @Override
     public String toString() {
-        return "№ "+id+" ФИО: "+name+" "+lastname+" "+patronymic+" отдел №"+department+" Зарплата: "+salary+ "р.";
+        return "№"+id+" ФИО: "+name+" "+lastname+" "+patronymic+" отдел №"+department+" Зарплата: "+salary+ "р.";
     }
 }

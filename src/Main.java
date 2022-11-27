@@ -19,11 +19,16 @@ public class Main {
 
         printAll();
         System.out.println("Сумма ЗП всех сотрудников составляет: " + salaryAll() + "р.");
+        Employee employeeMinSalary = minimumWage();
+        System.out.println("Сотрудник с минимальной ЗП: " + employeeMinSalary);
+        Employee employeeMaxSalary = maximumWage();
+        System.out.println("Сотрудник с максимальной ЗП: " + employeeMaxSalary);
+        System.out.println("Средняя ЗП составляет: " + averageSalary() + "р.");
 
     }
 
 
-    public static void printAll() {
+    private static void printAll() {
         for (Employee storage : storage) {
             if (storage != null) {
                 System.out.println(storage);
@@ -31,7 +36,7 @@ public class Main {
         }
     }
 
-    public static int salaryAll() {
+    private static int salaryAll() {
         int theAmount = 0;
         for (Employee storage : storage) {
             if (storage != null) {
@@ -41,29 +46,40 @@ public class Main {
         return theAmount;
     }
 
-    public static Employee minimumWage() {
+    private static Employee minimumWage() {
         int min = Integer.MAX_VALUE;
+        Employee employeeMinSalary = null;
         for (Employee storage : storage) {
-            if (min<storage.getSalary()) {
-
+            if (storage != null && min > storage.getSalary()) {
+                min = storage.getSalary();
+                employeeMinSalary = storage;
             }
         }
+        return employeeMinSalary;
+    }
+
+    private static Employee maximumWage() {
+        int max = Integer.MIN_VALUE;
+        Employee employeeMaxSalary = null;
+        for (Employee storage : storage) {
+            if (storage != null && max < storage.getSalary()) {
+                max = storage.getSalary();
+                employeeMaxSalary = storage;
+            }
+        }
+        return employeeMaxSalary;
+    }
+
+    private static double averageSalary() {
+        int counter = 0;
+        for (Employee storage : storage) {
+            if (storage != null) {
+                counter++;
+            }
+        }
+        if (counter != 0) {
+            return salaryAll() / counter;
+        }
+        return 0;
     }
 }
-    }
-
-
-    /*public static void 11111111()
-
-    {
-        int enumeration = 0;
-        for (int i = 0; i < storage.length; i++) {
-            if (storage != null) {
-                enumeration++;
-            }
-        }
-        if (enumeration != 0) {
-            return (double) get;
-        }
-    }*/
-            }
