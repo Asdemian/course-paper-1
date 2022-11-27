@@ -1,14 +1,15 @@
 public class Employee {
 
-    private String name;
-    private String lastname;
-    private String patronymic;
+    private final String name;
+    private final String lastname;
+    private final String patronymic;
 
     private int department;
 
     private int salary;
 
-    private int id;
+    private static int counter = 1;
+    private final int id;
 
     public Employee(String name, String lastname, String patronymic, int department, int salary) {
         this.name = name;
@@ -16,6 +17,7 @@ public class Employee {
         this.patronymic = patronymic;
         this.department = department;
         this.salary = salary;
+        this.id = counter++;
     }
 
     public String getName() {
@@ -48,5 +50,10 @@ public class Employee {
 
     public void setSalary(int salary) {
         this.salary = salary;
+    }
+
+    @Override
+    public String toString() {
+        return "№ "+id+" ФИО: "+name+" "+lastname+" "+patronymic+" отдел №"+department+" Зарплата: "+salary+ "р.";
     }
 }
