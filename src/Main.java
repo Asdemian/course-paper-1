@@ -24,6 +24,7 @@ public class Main {
         Employee employeeMaxSalary = maximumWage();
         System.out.println("Сотрудник с максимальной ЗП: " + employeeMaxSalary);
         System.out.println("Средняя ЗП составляет: " + averageSalary() + "р.");
+        printNameAll();
 
     }
 
@@ -81,5 +82,15 @@ public class Main {
             return salaryAll() / counter;
         }
         return 0;
+    }
+
+    private static void printNameAll() {
+        for (Employee storage : storage) {
+            if (storage != null) {
+                System.out.print(storage.getName());
+                System.out.print(" " + storage.getLastname());
+                System.out.println(" " + storage.getPatronymic());
+            }
+        }
     }
 }
